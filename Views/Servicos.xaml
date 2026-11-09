@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.Servicos"
+             Title="Serviços Adicionais"
+             BackgroundColor="#F4F6F9">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            
+            <Button Text="Voltar para Reserva" 
+                    Clicked="Voltar_Clicked"
+                    BackgroundColor="#0F172A"
+                    TextColor="White"
+                    CornerRadius="8"
+                    FontAttributes="Bold"
+                    HeightRequest="42"/>
+
+            <Border Stroke="#E2E8F0" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 12" Padding="20">
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="Comodidades e Serviços Opcionais" FontSize="18" FontAttributes="Bold" TextColor="#0F172A"/>
+                    <Label Text="Personalize a sua experiência selecionando os serviços adicionais desejados:" FontSize="13" TextColor="#64748B"/>
+
+                    <BoxView HeightRequest="1" Color="#F1F5F9"/>
+
+                    <Grid ColumnDefinitions="*, Auto">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Café da Manhã Premium" FontAttributes="Bold" TextColor="#1E293B" FontSize="14"/>
+                            <Label Text="Buffet completo com iguarias locais e internacionais." FontSize="12" TextColor="#64748B"/>
+                        </VerticalStackLayout>
+                        <Switch x:Name="swtCafe" Grid.Column="1" VerticalOptions="Center" OnColor="#D97706"/>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" Color="#F1F5F9"/>
+
+                    <Grid ColumnDefinitions="*, Auto">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Estacionamento Coberto" FontAttributes="Bold" TextColor="#1E293B" FontSize="14"/>
+                            <Label Text="Vaga segura com monitoramento 24 horas." FontSize="12" TextColor="#64748B"/>
+                        </VerticalStackLayout>
+                        <Switch x:Name="swtEstacionamento" Grid.Column="1" VerticalOptions="Center" OnColor="#D97706"/>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" Color="#F1F5F9"/>
+
+                    <Grid ColumnDefinitions="*, Auto">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Acesso ao Spa" FontAttributes="Bold" TextColor="#1E293B" FontSize="14"/>
+                            <Label Text="Utilização ilimitada de piscina aquecida e saunas." FontSize="12" TextColor="#64748B"/>
+                        </VerticalStackLayout>
+                        <Switch x:Name="swtSpa" Grid.Column="1" VerticalOptions="Center" OnColor="#D97706"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

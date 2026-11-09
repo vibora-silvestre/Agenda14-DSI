@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.ContratacaoHospedagem"
+             Title="Sistema de Hospedagem"
+             BackgroundColor="#F4F6F9">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="18" Padding="20">
+            
+            <!-- Menu Superior -->
+            <Border Stroke="#CBD5E1" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10" Padding="6">
+                <Grid ColumnDefinitions="*, *, *" ColumnSpacing="4">
+                    <Button x:Name="btnTabReserva" Text="Reserva" 
+                            Grid.Column="0"
+                            BackgroundColor="#0F172A" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HeightRequest="42"/>
+
+                    <Button x:Name="btnTabServicos" Text="Serviços" 
+                            Grid.Column="1"
+                            Clicked="IrParaServicos_Clicked"
+                            BackgroundColor="#F1F5F9" 
+                            TextColor="#475569" 
+                            CornerRadius="8" 
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HeightRequest="42"/>
+                    
+                    <Button x:Name="btnTabSobre" Text="Sobre" 
+                            Grid.Column="2" 
+                            Clicked="IrParaSobre_Clicked"
+                            BackgroundColor="#F1F5F9" 
+                            TextColor="#475569" 
+                            CornerRadius="8" 
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HeightRequest="42"/>
+                </Grid>
+            </Border>
+
+            <VerticalStackLayout Spacing="16">
+                <Border Stroke="#D97706" StrokeThickness="2" BackgroundColor="#FFFBEB" StrokeShape="RoundRectangle 12" Padding="15">
+                    <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Reserve e Desfrute o máximo conforto da sua experiência" FontSize="18" FontAttributes="Bold" TextColor="#92400E"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                
+                <Border Stroke="#E2E8F0" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 12" Padding="15">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Quantidade de Hóspedes" FontAttributes="Bold" FontSize="16" TextColor="#334155"/>
+                        
+                        <Grid ColumnDefinitions="*, 70, 42, 42" ColumnSpacing="6" VerticalOptions="Center">
+                            <Label Text="Adultos (maiores de 12 anos)" VerticalOptions="Center" TextColor="#64748B"/>
+                            <Border Grid.Column="1" Stroke="#CBD5E1" StrokeShape="RoundRectangle 6" BackgroundColor="#F8FAFC" HeightRequest="38" Padding="0">
+                                <Label x:Name="lbl_val_adultos" Text="1" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" TextColor="#1E293B"/>
+                            </Border>
+                            <Button Grid.Column="2" Text="-" Clicked="RemoverAdulto_Clicked" BackgroundColor="#F1F5F9" TextColor="#0F172A" FontAttributes="Bold" CornerRadius="6" HeightRequest="38" Padding="0"/>
+                            <Button Grid.Column="3" Text="+" Clicked="AdicionarAdulto_Clicked" BackgroundColor="#0F172A" TextColor="White" FontAttributes="Bold" CornerRadius="6" HeightRequest="38" Padding="0"/>
+                        </Grid>
+
+                        <BoxView HeightRequest="1" Color="#F1F5F9"/>
+
+                        <Grid ColumnDefinitions="*, 70, 42, 42" ColumnSpacing="6" VerticalOptions="Center">
+                            <Label Text="Crianças (até 12 anos)" VerticalOptions="Center" TextColor="#64748B"/>
+                            <Border Grid.Column="1" Stroke="#CBD5E1" StrokeShape="RoundRectangle 6" BackgroundColor="#F8FAFC" HeightRequest="38" Padding="0">
+                                <Label x:Name="lbl_val_criancas" Text="0" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" TextColor="#1E293B"/>
+                            </Border>
+                            <Button Grid.Column="2" Text="-" Clicked="RemoverCrianca_Clicked" BackgroundColor="#E2E8F0" TextColor="#1E293B" FontAttributes="Bold" CornerRadius="6" HeightRequest="38" Padding="0"/>
+                            <Button Grid.Column="3" Text="+" Clicked="AdicionarCrianca_Clicked" BackgroundColor="#0F172A" TextColor="White" FontAttributes="Bold" CornerRadius="6" HeightRequest="38" Padding="0"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Stroke="#E2E8F0" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 12" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Escolha o tipo de Quarto" FontAttributes="Bold" FontSize="16" TextColor="#334155"/>
+                        <Picker x:Name="pck_quarto" 
+                                Title="Selecione o seu quarto" 
+                                ItemDisplayBinding="{Binding Descricao}"
+                                BackgroundColor="#F8FAFC"
+                                TextColor="#0F172A"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Stroke="#E2E8F0" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 12" Padding="15">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Período da Estadia" FontAttributes="Bold" FontSize="16" TextColor="#0F172A"/>
+                        
+                        <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto">
+                            <Label Text="Data de Check-in:" VerticalOptions="Center" TextColor="#475569"/>
+                            <DatePicker x:Name="dtpck_checkin" 
+                                        DateSelected="dtpck_checkin_DateSelected" 
+                                        Grid.Column="1"
+                                        TextColor="#0F172A"/>
+                        </Grid>
+
+                        <BoxView HeightRequest="1" Color="#F1F5F9"/>
+
+                        <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto">
+                            <Label Text="Data de Check-out:" VerticalOptions="Center" TextColor="#475569"/>
+                            <DatePicker x:Name="dtpck_checkout" 
+                                        Grid.Column="1"
+                                        TextColor="#0F172A"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Button Text="Calcular" 
+                        Clicked="Button_Clicked"
+                        BackgroundColor="#D97706"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        CornerRadius="10"
+                        HeightRequest="50"
+                        Margin="0,10,0,20"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
